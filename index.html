@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+  <title>Nu8th | تأكيد الاشتراك</title>
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.1/css/bulma.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/UAParser.js/1.0.2/ua-parser.min.js" defer></script>
+</head>
+<body class="has-text-right has-background-light">
+  <section class="section is-flex is-justify-content-center is-align-items-center">
+    <div class="container" style="max-width: 480px; width: 100%;">
+      <div class="box has-text-centered mb-4">
+        <figure class="image is-96x96 is-inline-block">
+          <img src="/assets/logo.png" alt="Nu8th Logo" />
+        </figure>
+        <h1 class="title is-5 mt-3">اشتراك Nu8th GPT Plus</h1>
+        <p class="is-size-7 has-text-grey">
+          باستخدامك هذا النموذج، أنت توافق على جمع معلومات الجهاز والشبكة لأغراض أمنية وتحليلية.
+        </p>
+      </div>
+      <form id="orderForm" class="box">
+        <article class="message is-info">
+          <div class="message-body">
+            <strong>الباقات المتوفرة:</strong><br>
+            1- <strong>الاحترافية:</strong> جهازين<br>
+            2- <strong>الاقتصادية:</strong> جهاز واحد فقط
+          </div>
+        </article>
+        <div class="field">
+          <label class="label">رقم الطلب</label>
+          <div class="control has-icons-left">
+            <input class="input" type="number" name="order_id" placeholder="ادخل رقم طلبك هنا" required />
+            <span class="icon is-left"><i class="fas fa-hashtag"></i></span>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">اسم الباقة</label>
+          <div class="control has-icons-left">
+            <input class="input" type="text" name="subscription_type" placeholder="مثال: الاحترافية أو الاقتصادية" required />
+            <span class="icon is-left"><i class="fas fa-box"></i></span>
+          </div>
+        </div>
+        <div class="field mt-4">
+          <label class="checkbox">
+            <input type="checkbox" name="agreement" required />
+            <span>
+              أقرّ بأن الاشتراك مخصص لاستخدامي الشخصي فقط، وأي مشاركة للحساب مع شخص آخر أو استخدامه على عدد أجهزة يتجاوز المسموح يؤدي إلى سحب الاشتراك فورًا دون أي استرداد مالي، وأتحمّل كامل المسؤولية عند المخالفة.
+            </span>
+          </label>
+        </div>
+        <div class="field mt-5">
+          <button
+            class="button is-link is-fullwidth g-recaptcha"
+            data-sitekey="6LcEwBQrAAAAAFvLFq-xOWh5oC0f0UErNHJMeB8C"
+            data-callback="onSubmit"
+            data-action="submit"
+            type="submit">
+            <span>إرسال</span>
+            <span class="icon is-small"><i class="fas fa-paper-plane"></i></span>
+          </button>
+        </div>
+      </form>
+      <div id="formMessage" class="mt-5"></div>
+    </div>
+  </section>
+  <script>
+    window.onSubmit = function () {
+      document.getElementById("orderForm").dispatchEvent(new Event("submit", { cancelable: true }));
+    };
+  </script>
+  <script src="/js/otp-form.js"></script>
+</body>
+</html>
